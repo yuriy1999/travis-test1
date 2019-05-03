@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "chai": "^4.2.0",
     "dotenv": "^7.0.0",
-    "request": "^2.88.0",
-    "mongoose": "*"
+    "mongoose": "*",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "mocha": "^6.1.4"

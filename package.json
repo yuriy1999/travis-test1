@@ -8,7 +8,9 @@
     "request": "^2.88.0",
     "mongoose": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  },
   "scripts": {
     "start": "node index.js",
     "test": "mocha ./test/launch.js"

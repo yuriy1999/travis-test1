@@ -1,0 +1,19 @@
+version: '3'
+services:
+  api:
+    build: .
+    container_name: api_test_heroku
+    depends_on:
+      - mongo
+    networks:
+      - net1
+  mongo:
+    hostname: mongo
+    container_name: mongo
+    image: mongo:4.0.5-xenial
+    command: ["mongod", "--port", "27017"]
+    networks:
+      - net1
+
+networks:
+  net1:

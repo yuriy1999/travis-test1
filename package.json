@@ -1,0 +1,17 @@
+{
+  "name": "testheroku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "request": "^2.88.0",
+    "mongoose": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

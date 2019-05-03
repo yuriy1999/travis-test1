@@ -6,8 +6,8 @@ describe("Test Api", function() {
       assert.equal(Math.pow(2, 3), 8);
     });
 
-    it.skip("Fail test", function() {
-        assert.equal(Math.pow(3,3), 28)
+    it("Fail test in future", function() {
+        assert.equal(Math.pow(3,3), 27)
     })
   
 });

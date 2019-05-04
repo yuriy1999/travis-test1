@@ -6,8 +6,12 @@ describe("Test Api", function() {
       assert.equal(Math.pow(2, 3), 8);
     });
 
-    it("Fail test in future", function() {
+    it("Fail test in furure ", function() {
         assert.equal(Math.pow(3,3), 27)
     })
   
+    it("Simple asserting of strings!", function() {
+      assert.equal('qwe', 'qwe1')
+    })
+
 });

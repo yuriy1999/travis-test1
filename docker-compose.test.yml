@@ -1,0 +1,16 @@
+version: '3'
+services:
+  api-test:
+    build: . 
+    command: npm run test
+    container_name: api_test_heroku_test
+    environment:
+      - DB_URI=mongodb://mongo:27017/heroku
+      - PORT=8081
+      - HOST=0.0.0.0
+    volumes:
+      - .:/api
+    depends_on:
+      - mongo
+    networks:
+      - net1

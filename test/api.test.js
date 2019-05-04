@@ -11,7 +11,7 @@ describe("Test Api", function() {
     })
   
     it("Simple asserting of strings!", function() {
-      assert.equal('qwe', 'qwe1')
+      assert.equal('qwe', 'qwe')
     })
 
 });

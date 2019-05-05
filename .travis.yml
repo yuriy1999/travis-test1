@@ -18,7 +18,7 @@ jobs:
     - stage: build
       name: "Building and tagging an image"
       script: 
-        - ./scripts/build.sh
+        - bash ./scripts/build.sh
     
     # - stage: deploy-test
     #   name: "Deploy to Heroku test environment"

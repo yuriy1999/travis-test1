@@ -19,7 +19,9 @@ jobs:
     - stage: build
       name: "Building and tagging an image"
       script: 
-        - bash ./scripts/build.sh
+        - echo "API KEYS " 
+        - cat ~/.netrc
+        # - bash ./scripts/build.sh
     
     # - stage: deploy-test
     #   name: "Deploy to Heroku test environment"

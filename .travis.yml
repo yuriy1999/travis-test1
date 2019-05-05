@@ -13,6 +13,7 @@ jobs:
         # - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
         # - chmod +x docker-compose
         # - sudo mv docker-compose /usr/local/bin
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 
       install:
         - npm install
       script: skip 
@@ -22,13 +23,13 @@ jobs:
       script: 
         - bash ./scripts/build.sh
     
-    - stage: deploy-test
-      name: "Deploy to Heroku test environment"
-      script: skip
-      deploy:
-        provider: script
-        script:
-         - bash ./scripts/deploy.sh
-        on: 
-          branch: master
+    # - stage: deploy-test
+    #   name: "Deploy to Heroku test environment"
+    #   script: skip
+    #   deploy:
+    #     provider: script
+    #     script:
+    #      - bash ./scripts/deploy.sh
+    #     on: 
+    #       branch: master
       

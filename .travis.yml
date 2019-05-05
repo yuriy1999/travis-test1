@@ -4,17 +4,17 @@ services:
 
 jobs:
   include:
-    - stage: testing
-      env: 
-        - COMPOSE_VERSION=1.23.2
-      before_install:
-        - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-        - chmod +x docker-compose
-        - sudo mv docker-compose /usr/local/bin
-      install:
-        - npm install
-      script: 
-        - docker-compose -f docker-compose.yml -f docker-compose.test.yml run api-test
+    # - stage: testing
+    #   env: 
+    #     - COMPOSE_VERSION=1.23.2
+    #   before_install:
+    #     - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+    #     - chmod +x docker-compose
+    #     - sudo mv docker-compose /usr/local/bin
+    #   install:
+    #     - npm install
+    #   script: 
+    #     - docker-compose -f docker-compose.yml -f docker-compose.test.yml run api-test
     - stage: build
       name: "Building and tagging an image"
       script: 

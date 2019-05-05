@@ -10,27 +10,27 @@ jobs:
         - COMPOSE_VERSION=1.23.2
       before_install:
         - wget -qO- https://toolbelt.heroku.com/install.sh | sh 
-        # - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-        # - chmod +x docker-compose
-        # - sudo mv docker-compose /usr/local/bin
+        - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+        - chmod +x docker-compose
+        - sudo mv docker-compose /usr/local/bin
         
-      script: skip 
-        #- docker-compose -f docker-compose.yml -f docker-compose.test.yml run api-test
+      script:
+        - docker-compose -f docker-compose.yml -f docker-compose.test.yml run api-test
     - stage: build
       name: "Building and tagging an image"
       script: 
         - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
-        - echo "API KEYS " 
-        - cat ~/.netrc
         - bash ./scripts/build.sh
     
-    # - stage: deploy-test
-    #   name: "Deploy to Heroku test environment"
-    #   script: skip
-    #   deploy:
-    #     provider: script
-    #     script:
-    #      - bash ./scripts/deploy.sh
-    #     on: 
-    #       branch: master
+    - stage: deploy-test
+      name: "Deploy to Heroku test environment"
+      script: skip
+      deploy:
+        provider: script
+        script:
+         - bash ./scripts/deploy.sh
+        on: 
+          branch: master
+      after_deploy:
+        - heroku logs --app $HEROKU_APP_NAME
       

@@ -23,8 +23,8 @@ const initDb = async () => {
 
   userModel = mongoose.model('User', userSchema);
   await userModel.create({
-    email: 'anton@borrower.com',
-    password: '123'
+    email: 'anton@borrowerExt.com',
+    password: '123borrow'
   })
 }
 
@@ -33,7 +33,7 @@ initDb();
 http.createServer(async function (req, res) {
   const data = await userModel.find();
   console.log('Data: ', data);
-  res.write(`Data from db: ${data}`); //write a response to the client
+  res.write(`Data from mongo lab db: ${data}`); //write a response to the client
   res.end(); //end the response
 }).listen(PORT, HOST, () => {
   console.log('Common app Listening on, ', HOST + ':' + PORT);

@@ -13,17 +13,15 @@ jobs:
         - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
         - chmod +x docker-compose
         - sudo mv docker-compose /usr/local/bin
-        
       script:
         - docker-compose -f docker-compose.yml -f docker-compose.test.yml run api-test
     - stage: build
       name: "Building and tagging an image"
       script: 
-        - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
-        - bash ./scripts/build.sh
-    
+        - bash ./scripts/build.sh    
     - stage: deploy-test
       name: "Deploy to Heroku test environment"
+      if: branch = test AND type = push
       script: skip
       deploy:
         provider: script

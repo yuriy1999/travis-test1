@@ -6,11 +6,10 @@ services:
 jobs:
   include:
     - stage: test
-    if: branch = develop AND type = pull_request
+      if: branch = develop AND type = pull_request
       env: 
         - COMPOSE_VERSION=1.23.2
       before_install:
-        - wget -qO- https://toolbelt.heroku.com/install.sh | sh 
         - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
         - chmod +x docker-compose
         - sudo mv docker-compose /usr/local/bin
@@ -28,6 +27,7 @@ jobs:
       deploy:
         provider: script
         script:
+         - wget -qO- https://toolbelt.heroku.com/install.sh | sh 
          - bash ./scripts/deploy.sh
         on: 
           branch: test

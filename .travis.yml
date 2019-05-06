@@ -27,7 +27,6 @@ jobs:
       deploy:
         provider: script
         script:
-         - wget -qO- https://toolbelt.heroku.com/install.sh | sh 
          - bash ./scripts/deploy.sh
         on: 
           branch: test

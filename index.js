@@ -23,8 +23,8 @@ const initDb = async () => {
 
   userModel = mongoose.model('User', userSchema);
   await userModel.create({
-    email: 'anton@borrowerExt.com',
-    password: '123borrow'
+    email: 'borrow@email.com',
+    password: 'borrow_super_secret'
   })
 }
 

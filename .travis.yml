@@ -6,6 +6,7 @@ services:
 jobs:
   include:
     - stage: test
+    if: branch = develop AND type = pull_request
       env: 
         - COMPOSE_VERSION=1.23.2
       before_install:
@@ -17,6 +18,7 @@ jobs:
         - docker-compose -f docker-compose.yml -f docker-compose.test.yml run api-test
     - stage: build
       name: "Building and tagging an image"
+      if: branch = test AND type = push
       script: 
         - bash ./scripts/build.sh    
     - stage: deploy-test
@@ -28,7 +30,7 @@ jobs:
         script:
          - bash ./scripts/deploy.sh
         on: 
-          branch: master
+          branch: test
       after_deploy:
         - heroku logs --app $HEROKU_APP_NAME
       
